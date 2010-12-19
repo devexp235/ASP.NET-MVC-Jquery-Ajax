@@ -1,0 +1,10 @@
+bin/
+obj/
+Tools/
+*.suo
+*.user
+_ReSharper.ASPNETMVC_Jquery_Ajax/
+
+*.exe
+*.nupkg
+
