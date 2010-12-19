@@ -1,0 +1,44 @@
+﻿@model IEnumerable<ASPNETMVC_Jquery_Ajax.Controllers.Product>
+@{
+    View.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>
+    Index</h2>
+<p>
+    @using(Html.BeginForm("AddProduct", "Home", FormMethod.Post, new { id = "novo_produto" })){
+        <label for="Description" style="display: block;">Descrição:</label>
+        @Html.TextBox("Description")
+        <label for="Description" style="display: block;">Preço:</label>
+        @Html.TextBox("Price") 
+
+        <input type="submit" name="AddProduct" value="add" style="display:block;"/>
+    }
+</p>
+<table>
+    <tr>
+        <th>
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            Price
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) | @Html.ActionLink("Details", "Details", new { id = item.Id })
+                | @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+            <td>
+                @item.Description
+            </td>
+            <td>
+                @String.Format("{0:F}", item.Price)
+            </td>
+        </tr>
+    }
+</table>
