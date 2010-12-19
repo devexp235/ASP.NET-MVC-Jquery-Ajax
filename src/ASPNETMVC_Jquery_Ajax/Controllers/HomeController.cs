@@ -21,6 +21,9 @@ namespace ASPNETMVC_Jquery_Ajax.Controllers
             var products = Session["products"] as List<Product>;
             products.Add(newProduct);
 
+            if (Request.IsAjaxRequest())
+                return PartialView("RowSingleProduct", newProduct);
+
             return RedirectToAction("Index");
         }
     }
