@@ -10,9 +10,19 @@ namespace ASPNETMVC_Jquery_Ajax.Controllers
     {
         public ActionResult Index()
         {
-            return View(new SomeRepo().AllProducts());
+            if (Session["products"] == null)
+                Session["products"] = new SomeRepo().AllProducts().ToList();
+
+            return View(Session["products"] as List<Product>);
         }
 
+        public ActionResult AddProduct(Product newProduct)
+        {
+            var products = Session["products"] as List<Product>;
+            products.Add(newProduct);
+
+            return RedirectToAction("Index");
+        }
     }
 
     public class SomeRepo : IRepository
