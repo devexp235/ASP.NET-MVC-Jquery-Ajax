@@ -14,19 +14,20 @@ function config_add_products() {
 
         e.preventDefault();
 
-        $.ajax({
-            url: $(this).attr("action"),
-            data: $(this).serialize(),
-            success: function (retorno) {
-                $("#products").append(retorno);
-            },
-            error: function (erro) {
-                alert(erro);
-            },
-            complete: function () {
-                $("#progress").hide();
-            }
-        });
+$.ajax({
+    url: $(this).attr("action"),
+    data: $(this).serialize(),
+    type: "POST",
+    success: function (retorno) {
+        $("#products").append(retorno);
+    },
+    error: function (erro) {
+        alert(erro);
+    },
+    complete: function () {
+        $("#progress").hide();
+    }
+});
     });
 }
 </script>

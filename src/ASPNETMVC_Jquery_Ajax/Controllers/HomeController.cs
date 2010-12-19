@@ -17,6 +17,7 @@ namespace ASPNETMVC_Jquery_Ajax.Controllers
             return View(Session["products"] as List<Product>);
         }
 
+        [HttpPost]
         public ActionResult AddProduct(Product newProduct)
         {
             var products = Session["products"] as List<Product>;
