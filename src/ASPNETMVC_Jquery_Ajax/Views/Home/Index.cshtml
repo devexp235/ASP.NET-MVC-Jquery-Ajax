@@ -10,6 +10,8 @@
     });
     function config_add_products() {
         $("#novo_produto").submit(function (e) {
+            $("#progress").show();
+
             e.preventDefault();
 
             $.ajax({
@@ -17,6 +19,9 @@
                 data: $(this).serialize(),
                 success: function (retorno) {
                     $("#products").append(retorno);
+                },
+                complete: function () {
+                    $("#progress").hide();
                 }
             });
         });
@@ -34,6 +39,9 @@
         @Html.TextBox("Price") 
 
         <input type="submit" name="AddProduct" value="add" style="display: block;" />
+<div id="progress" style="display: none;">
+    <img src="/images/progress.gif" />
+</div>
     }
 </p>
 <table id="products">
