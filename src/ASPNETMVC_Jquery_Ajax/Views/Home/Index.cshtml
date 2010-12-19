@@ -8,24 +8,27 @@
     $(function () {
         config_add_products();
     });
-    function config_add_products() {
-        $("#novo_produto").submit(function (e) {
-            $("#progress").show();
+function config_add_products() {
+    $("#novo_produto").submit(function (e) {
+        $("#progress").show();
 
-            e.preventDefault();
+        e.preventDefault();
 
-            $.ajax({
-                url: $(this).attr("action"),
-                data: $(this).serialize(),
-                success: function (retorno) {
-                    $("#products").append(retorno);
-                },
-                complete: function () {
-                    $("#progress").hide();
-                }
-            });
+        $.ajax({
+            url: $(this).attr("action"),
+            data: $(this).serialize(),
+            success: function (retorno) {
+                $("#products").append(retorno);
+            },
+            error: function (erro) {
+                alert(erro);
+            },
+            complete: function () {
+                $("#progress").hide();
+            }
         });
-    }
+    });
+}
 </script>
 <h2>
     Products</h2>
@@ -41,7 +44,7 @@
         <input type="submit" name="AddProduct" value="add" style="display: block;" />
 <div id="progress" style="display: none;">
     <img src="/images/progress.gif" />
-</div>
+        </div>
     }
 </p>
 <table id="products">

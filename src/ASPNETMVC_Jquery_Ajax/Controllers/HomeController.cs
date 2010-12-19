@@ -19,7 +19,6 @@ namespace ASPNETMVC_Jquery_Ajax.Controllers
 
         public ActionResult AddProduct(Product newProduct)
         {
-            Thread.Sleep(3000);
             var products = Session["products"] as List<Product>;
             products.Add(newProduct);
 
